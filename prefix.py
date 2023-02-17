@@ -72,7 +72,8 @@ def use_PrefixMiddleware(app):
 #    Connect prefix handler to our Flask application
 #    Define Flask routes for testing prefix handler
 #
-if __name__ == '__main__':
+def main():
+    app = Flask(__name__)
 
     # Insert the wrapper for handling PROXY when using csel.io virtual machine
     # Calling this routine will have no effect if running Flask on local machine
@@ -150,9 +151,13 @@ if __name__ == '__main__':
 
         return resp
 
-    ######################################################################
-    # run() method of Flask class runs the application 
-    # on the local development server using port 3308 instead of port 5000.
-#    app.run(host='0.0.0.0', port=3308)
-    app.run(host='localhost', port=3308)
+    return app
     
+if __name__ == '__main__':
+        app = main()
+        
+        ######################################################################
+        # run() method of Flask class runs the application 
+        # on the local development server using port 3308 instead of port 5000.
+        #    app.run(host='0.0.0.0', port=3308)
+        app.run(host='localhost', port=3308)
